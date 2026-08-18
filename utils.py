@@ -1,16 +1,10 @@
 import sqlite3
 
-def criar_tabela():
-    conexao = sqlite3.connect("banco.db")
-    cursor = conexao.cursor()
-    cursor.execute("""CREATE TABLE IF NOT EXISTS note (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    content TEXT
-);""")
-    conexao.commit()
-    conexao.close()
 
+def recebe_anotacao(note):
+    conexao = sqlite3.connect("bando.db")
+    cursor = conexao.cursor()
+    cursor.execute("INSERT INTO note(title,content) VALUES(?,?)",(note['titulo'],note['detalhes']))
 
 
 def load_data():
