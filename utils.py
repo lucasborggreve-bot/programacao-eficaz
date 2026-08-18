@@ -2,10 +2,12 @@ import sqlite3
 
 
 def recebe_anotacao(note):
-    conexao = sqlite3.connect("bando.db")
+    conexao = sqlite3.connect("banco.db")
     cursor = conexao.cursor()
-    cursor.execute("INSERT INTO note(title,content) VALUES(?,?)",(note['titulo'],note['detalhes']))
-
+    cursor.execute("INSERT INTO note (title,content) VALUES(?,?)",(note['titulo'],note['detalhes']))
+    conexao.commit()
+    conexao.close()
+    
 
 def load_data():
     conexao = sqlite3.connect("banco.db")
