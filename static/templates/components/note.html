@@ -1,4 +1,9 @@
 <li class="note-card">
     <h3>{title}</h3>
     <p>{details}</p>
+    <form class="note-form" action="/delete" method="POST">
+        <button type="submit" name="delete_button">delete</button>
+        <input type="hidden" name="id" value= "{note_id}">
+    </form>
 </li>
+    

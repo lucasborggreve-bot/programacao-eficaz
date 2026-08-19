@@ -15,12 +15,18 @@ def index():
     return render_template_string(views.index())
 
 @app.route('/submit', methods=['POST'])
+
 def submit_form():
     titulo = request.form.get('titulo') 
     detalhes = request.form.get('detalhes') 
-
     views.submit(titulo, detalhes)
     return redirect('/')
+
+@app.route('/delete', methods = ["POST"])
+def delete_form():
+    delete = request.form.get("id")
+    views.delete(delete)
+    return redirect ('/')
 
 if __name__ == '__main__':
     app.run(debug=True)
