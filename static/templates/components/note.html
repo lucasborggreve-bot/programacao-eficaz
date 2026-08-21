@@ -1,9 +1,18 @@
 <li class="note-card">
     <h3>{title}</h3>
     <p>{details}</p>
-    <form class="note-form" action="/delete" method="POST">
-        <button type="submit" name="delete_button">delete</button>
-        <input type="hidden" name="id" value= "{note_id}">
-    </form>
+    <div class="note-actions">
+        <form class="card-edit-form" action="/update" method="GET">
+            <button class="edit-button" type="submit" name="edit_button" aria-label="Editar nota" title="Editar nota">✏️</button>
+            <input type="hidden" name="id" value="{note_id}">
+        </form>
+        <form class="delete-form" action="/delete" method="POST">
+            <button class="delete-button" type="submit" name="delete_button" aria-label="Excluir nota" title="Excluir nota">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M4 7h16M10 11v6m4-6v6M9 7l1-3h4l1 3m-9 0 1 13h10l1-13" />
+                </svg>
+            </button>
+            <input type="hidden" name="id" value="{note_id}">
+        </form>
+    </div>
 </li>
-    

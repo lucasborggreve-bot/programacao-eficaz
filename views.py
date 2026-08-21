@@ -1,4 +1,4 @@
-from utils import load_data, load_template,recebe_anotacao, deleta_anotacao
+from utils import load_data, load_template,recebe_anotacao, deleta_anotacao,edita_anotacao,busca_anotacao
 
 
 def index():
@@ -20,3 +20,15 @@ def submit(titulo,detalhes):
 def delete(note_id):
     deleta_anotacao(note_id)
     return
+
+def edit(note):
+    edit_template = load_template('components/edit.html')
+    return edit_template.format(note_id = note[0], title = note[1], details = note[2])
+    
+
+def busca_nota(note_id):
+    return busca_anotacao(note_id)
+
+def salva_edit(note_id, titulo, detalhes):
+    note = {"titulo": titulo, "detalhes": detalhes}
+    return edita_anotacao(note, note_id)

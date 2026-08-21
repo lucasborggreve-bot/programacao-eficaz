@@ -31,3 +31,22 @@ def deleta_anotacao(note_id):
     cursor.execute ("DELETE FROM note WHERE id = ? ",(note_id,))
     conexao.commit()
     conexao.close()
+
+
+
+
+def edita_anotacao(note,note_id):
+    conexao = sqlite3.connect("banco.db")
+    cursor = conexao.cursor()
+    cursor.execute("UPDATE note SET title = ?, content = ? WHERE id = ?",(note["titulo"],note["detalhes"], note_id))
+    conexao.commit()
+    conexao.close()
+    return
+
+def busca_anotacao(note_id):
+    conexao = sqlite3.connect("banco.db")
+    cursor = conexao.cursor()
+    execucao = cursor.execute("SELECT id,title,content FROM note WHERE id = ?", (note_id))
+    recuperacao = execucao.fetchone()
+    conexao.close()
+    return recuperacao

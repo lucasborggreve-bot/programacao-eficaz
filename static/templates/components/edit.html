@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar nota</title>
+    <link rel="stylesheet" href="{{{{ url_for('static', filename='css/getit.css') }}}}">
+</head>
+
+<body>
+    <main class="edit-page">
+        <section class="edit-card" aria-labelledby="edit-title">
+            <a class="back-link" href="/" aria-label="Voltar para minhas notas">← Minhas notas</a>
+
+            <h1 id="edit-title">Editar nota</h1>
+            <p class="edit-description">Atualize os dados da sua nota e salve quando terminar.</p>
+
+            <form class="edit-form" action="/update" method="POST">
+
+                <input type="hidden" name="id" value="{note_id}">
+
+                <div class="form-field">
+                    <label for="titulo">Título</label>
+                    <input
+                        type="text"
+                        id="titulo"
+                        name="titulo"
+                        value="{title}"
+                        required
+                        maxlength="80"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="form-field">
+                    <label for="detalhes">Detalhes</label>
+                    <textarea
+                        id="detalhes"
+                        name="detalhes"
+                        required
+                        maxlength="500"
+                        rows="7"
+                    >{details}</textarea>
+                </div>
+
+                <div class="edit-actions">
+                    <a class="cancel-button" href="/">Cancelar</a>
+                    <button type="submit">Salvar alterações</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>
