@@ -28,9 +28,8 @@ def delete_form():
     views.delete(delete)
     return redirect ('/')
 
-@app.route('/update', methods=['GET'])
-def recebe_edit_form():
-    note_id = request.args.get("id")
+@app.route('/update/<int:note_id>', methods=['GET'])
+def recebe_edit_form(note_id):
     nota = views.busca_nota(note_id)
     return render_template_string(views.edit(nota))
 

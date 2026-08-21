@@ -2,10 +2,7 @@
     <h3>{title}</h3>
     <p>{details}</p>
     <div class="note-actions">
-        <form class="card-edit-form" action="/update" method="GET">
-            <button class="edit-button" type="submit" name="edit_button" aria-label="Editar nota" title="Editar nota">✏️</button>
-            <input type="hidden" name="id" value="{note_id}">
-        </form>
+        <a class="edit-button" name="edit_button" href="/update/{note_id}" aria-label="Editar nota" title="Editar nota">✏️</a>
         <form class="delete-form" action="/delete" method="POST">
             <button class="delete-button" type="submit" name="delete_button" aria-label="Excluir nota" title="Excluir nota">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">

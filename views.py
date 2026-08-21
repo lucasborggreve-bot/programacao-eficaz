@@ -23,7 +23,7 @@ def delete(note_id):
 
 def edit(note):
     edit_template = load_template('components/edit.html')
-    return edit_template.format(note_id = note[0], title = note[1], details = note[2])
+    return edit_template.format(note_id=note.id, title=note.title, details=note.content)
     
 
 def busca_nota(note_id):

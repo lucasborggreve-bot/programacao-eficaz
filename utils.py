@@ -1,4 +1,12 @@
 import sqlite3
+from dataclasses import dataclass
+
+
+@dataclass
+class Note:
+    id: int
+    title: str
+    content: str
 
 
 def recebe_anotacao(note):
@@ -46,7 +54,7 @@ def edita_anotacao(note,note_id):
 def busca_anotacao(note_id):
     conexao = sqlite3.connect("banco.db")
     cursor = conexao.cursor()
-    execucao = cursor.execute("SELECT id,title,content FROM note WHERE id = ?", (note_id))
+    execucao = cursor.execute("SELECT id,title,content FROM note WHERE id = ?", (note_id,))
     recuperacao = execucao.fetchone()
     conexao.close()
-    return recuperacao
+    return Note(*recuperacao) if recuperacao else None
